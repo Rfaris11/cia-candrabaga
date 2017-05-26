@@ -10,7 +10,8 @@
 	<title>CIA Access</title>
 
 	<!-- <link rel="stylesheet" href="assets/demo.css"> -->
-	<link rel="stylesheet" href="assets/css/form-basic.css">
+	<!-- <link rel="stylesheet" href="assets/css/form-basic.css"> --> <!-- settingan lokal -->
+    <link rel="stylesheet" href="<?= base_url('assets/css/form-basic.css'); ?>">
 
 </head>
 
@@ -35,11 +36,13 @@
 
         <!-- You only need this form and the form-basic.css -->
 
-        <form class="form-basic" method="POST" action="#">
+        <form class="form-basic" method="POST" action="<?= base_url('index.php/Cia_access_controller/do_insert'); ?>">
 
             <div class="form-title-row">
                 <h1>Create Account</h1>
             </div>
+
+            <?= "<h3>".$this->session->flashdata('pesan')."</h3>"; ?>
 
             <div class="form-row">
                 <label>
@@ -79,17 +82,8 @@
                 <label>
                     <span>Role</span>
                     <select name="userRole">
-                        <option value="1">Super Admin</option>
-                        <option value="2">Admin</option>
-                    </select>
-                </label>
-            </div>
-
-            <div class="form-row">
-                <label>
-                    <span>Status</span>
-                    <select name="userStatus">
-                        <option value="0">Offline</option>
+                        <option value="1">Admin</option>
+                        <option value="2">User</option>
                     </select>
                 </label>
             </div>
@@ -137,7 +131,7 @@
             </div> -->
 
             <div class="form-row">
-                <button type="submit" name="btnSubmit">Create Account</button>
+                <button type="submit" name="btnSubmit" value="simpan">Create Account</button>
             </div>
 
         </form>
