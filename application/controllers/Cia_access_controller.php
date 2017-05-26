@@ -20,7 +20,7 @@ class Cia_access_controller extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('index');
+		$this->load->view('v_login');
 	}
 
 	public function do_insert(){
