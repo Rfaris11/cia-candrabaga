@@ -36,7 +36,7 @@
 
         <!-- You only need this form and the form-basic.css -->
 
-        <form class="form-basic" method="POST" action="<?= base_url('index.php/Cia_access_controller/do_insert'); ?>">
+        <form class="form-basic" method="POST" action="<?= base_url('index.php/Add_user/do_insert'); ?>">
 
             <div class="form-title-row">
                 <h1>Create Account</h1>
@@ -47,21 +47,21 @@
             <div class="form-row">
                 <label>
                     <span>User ID</span>
-                    <input type="text" name="userId">
+                    <input type="text" name="userId" required>
                 </label>
             </div>
 
             <div class="form-row">
                 <label>
                     <span>Password</span>
-                    <input type="Password" name="userPassword">
+                    <input type="Password" name="userPassword" required>
                 </label>
             </div>
 
             <div class="form-row">
                 <label>
                     <span>Username</span>
-                    <input type="text" name="userName">
+                    <input type="text" name="userName" required>
                 </label>
             </div>
 
@@ -131,10 +131,14 @@
             </div> -->
 
             <div class="form-row">
-                <button type="submit" name="btnSubmit" value="simpan">Create Account</button>
+                <button type="submit" name="btnSubmit">Create Account</button>
             </div>
+            <div class="form-row">
+                <a href="<?= base_url('index.php/Logout/index'); ?>" style="text-decoration: none;">
+                    <button type="button">Log out</button></a>
 
         </form>
+        
 
     </div>
 

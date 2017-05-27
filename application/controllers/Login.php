@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Cia_access_controller extends CI_Controller {
+class Login extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -18,33 +18,39 @@ class Cia_access_controller extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
+
+	function __construct(){
+		parent::__construct();
+		if($this->session->userdata('status')=="login"){
+			redirect('Add_user/index');
+		}
+
+		
+	}
+
 	public function index()
 	{
 		$this->load->view('v_login');
 	}
 
-	public function do_insert(){
+	public function autentikasi(){
 		$userId = $_POST['userId'];
 		$userPassword = md5($_POST['userPassword']);
-		$userName = $_POST['userName'];
-		$userGroup = $_POST['userGroup'];
-		$userRole = $_POST['userRole'];
-		$userStatus = 0;
-		$data_insert = array(
+		$where = array(
 			'cia_user_id' => $userId,
-			'cia_user_password' => $userPassword,
-			'cia_user_name' => $userName,
-			'fk_para_group_id' => $userGroup,
-			'fk_para_role_id' => $userRole,
-			'cia_user_status' => $userStatus
-		);
-		$res = $this->Cia_access_model->insertCiaAccess('cia_access',$data_insert);
+			'cia_user_password' => $userPassword
+			);
+		$res = $this->M_login->cekLogin('cia_access',$where)->num_rows();
 		if($res>=1){
-			$this->session->set_flashdata('pesan','Data berhasil disimpan');
-			redirect('Cia_access_controller/index');
+			$data_session = array(
+				'userId' => $userId,
+				'status' => "login"
+				);
+			$this->session->set_userdata($data_session);
+			redirect('Add_user/index');
 		}else{
-			$this->session->set_flashdata('pesan','Data gagal disimpan');
-			redirect('Cia_access_controller/index');
+			$this->session->set_flashdata('pesanLogin','Access denied');
+			redirect('Login/index');
 		}
 	}
 }

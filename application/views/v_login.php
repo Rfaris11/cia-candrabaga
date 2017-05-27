@@ -2,7 +2,7 @@
 <html >
 <head>
   <meta charset="UTF-8">
-  <title>Material Login Form</title>
+  <title>CIA Access</title>
   
   <link rel="stylesheet" href="<?= base_url('assets/css/reset.min.cs'); ?>'">
 
@@ -20,25 +20,26 @@
 <!-- Pen Title-->
 <div class="pen-title">
   <h1>CIA Access</h1>
+  <?= "<h2>".$this->session->flashdata('pesanLogin')."</h2>"; ?>
 </div>
 <!-- <div class="rerun"><a href="">Rerun Pen</a></div> -->
 <div class="container">
   <div class="card"></div>
   <div class="card">
     <h1 class="title">Login</h1>
-    <form method="POST" action="#">
+    <form method="POST" action="<?= base_url('index.php/Login/autentikasi'); ?>">
       <div class="input-container">
-        <input type="text" required/>
-        <label>Username</label>
+        <input type="text" name="userId" required/>
+        <label>User ID</label>
         <div class="bar"></div>
       </div>
       <div class="input-container">
-        <input type="password" required/>
+        <input type="password" name="userPassword" required/>
         <label>Password</label>
         <div class="bar"></div>
       </div>
       <div class="button-container">
-        <button><span>Go</span></button>
+        <button value="btnLogin"><span>Go</span></button>
       </div>
       <!-- <div class="footer"><a href="#">Forgot your password?</a></div> -->
     </form>
