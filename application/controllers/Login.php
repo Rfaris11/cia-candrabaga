@@ -22,7 +22,7 @@ class Login extends CI_Controller {
 	function __construct(){
 		parent::__construct();
 		if($this->session->userdata('status')=="login"){
-			redirect('Add_user/index');
+			redirect('Add_user');
 		}
 
 		
@@ -47,10 +47,10 @@ class Login extends CI_Controller {
 				'status' => "login"
 				);
 			$this->session->set_userdata($data_session);
-			redirect('Add_user/index');
+			redirect('Add_user');
 		}else{
 			$this->session->set_flashdata('pesanLogin','Access denied');
-			redirect('Login/index');
+			redirect('Login');
 		}
 	}
 }

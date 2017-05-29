@@ -22,7 +22,7 @@ class Logout extends CI_Controller {
 	function __construct(){
 		parent::__construct();
 		if($this->session->userdata('status')!="login"){
-			redirect('Login/index');
+			redirect('Login');
 		}
 
 		
@@ -31,7 +31,7 @@ class Logout extends CI_Controller {
 	public function index()
 	{
 		$this->session->sess_destroy();
-		redirect('Login/index');
+		redirect('Login');
 	}
 
 	

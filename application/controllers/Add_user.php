@@ -22,7 +22,7 @@ class Add_user extends CI_Controller {
 	function __construct(){
 		parent::__construct();
 		if($this->session->userdata('status')!="login"){
-			redirect('Login/index');
+			redirect('Login');
 		}
 
 	}
@@ -51,13 +51,13 @@ class Add_user extends CI_Controller {
 			$res = $this->M_login->insertCiaAccess('cia_access',$data_insert);
 			if($res>=1){
 				$this->session->set_flashdata('pesan','Data berhasil disimpan');
-				redirect('Add_user/index');
+				redirect('Add_user');
 			}else{
 				$this->session->set_flashdata('pesan','Data gagal disimpan');
-				redirect('Login/index');
+				redirect('Add_user');
 			}
 		}else{
-			redirect('Add_user/index');
+			redirect('Add_user');
 		}
 	}
 

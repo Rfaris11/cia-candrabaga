@@ -35,7 +35,7 @@ $config['base_url'] = 'http://cia-candrabaga.dlinkddns.com:8090/cia-candrabaga1.
 | variable so that it is blank.
 |
 */
-$config['index_page'] = 'index.php';
+$config['index_page'] = '';
 
 /*
 |--------------------------------------------------------------------------
